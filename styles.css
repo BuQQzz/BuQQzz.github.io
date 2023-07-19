@@ -1,6 +1,6 @@
 /* Global Styles */
 body {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   background: linear-gradient(to top, #212121, #FAFAFA);
   color: #fff;
   font-size: 18px;
@@ -9,6 +9,7 @@ body {
 
 /* Section Styles */
 section {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
   background: linear-gradient(to right, #0F172A, #164E63);
   color: #fff;
   border: 2px solid #546E7A;
@@ -20,6 +21,7 @@ section {
 
 /* Heading Styles */
 h1 {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 3em;
 }
 
@@ -32,6 +34,7 @@ img {
 
 /* Paragraph Styles */
 p {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
   padding: 20px;
 }
 
