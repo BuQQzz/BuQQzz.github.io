@@ -119,10 +119,21 @@ section:nth-child(5) {
 
 .carousel-track {
   display: flex; /* Arrange images in a row */
+  animation: scroll 10s linear infinite; /* Infinite scroll animation */
 }
 
 .carousel-track img {
   width: 100%; /* Adjust image size as needed */
   margin-right: 20px; /* Adjust spacing between images as needed */
   object-fit: cover; /* Ensure images maintain aspect ratio */
+}
+
+/* CSS Animation for Infinite Carousel */
+@keyframes scroll {
+  0% {
+    transform: translateX(0); /* Start from the initial position */
+  }
+  100% {
+    transform: translateX(calc(-100% * var(--img-count))); /* Translate to the left by 100% (width of the carousel) */
+  }
 }
