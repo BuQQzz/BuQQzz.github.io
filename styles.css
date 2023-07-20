@@ -119,7 +119,7 @@ section:nth-child(5) {
 
 .carousel-track {
   display: flex; /* Arrange images in a row */
-  animation: scrollCarousel 10s linear infinite; /* Apply carousel scrolling animation */
+  animation: scrollCarousel 10s linear infinite 1s; /* Apply carousel scrolling animation with 1-second delay */
 }
 
 .carousel-track img {
