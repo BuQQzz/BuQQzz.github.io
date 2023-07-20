@@ -17,14 +17,14 @@ let position = 0;
 function moveCarousel() {
   // Move the carousel track to the left
   position -= 1;
-  carouselTrack.style.transform = `translateX(${position}px)`;
 
   // Check if the carousel has reached the end
   if (position <= -carouselWidth) {
-    // Reset the position to the beginning
-    position = 0;
-    carouselTrack.style.transform = `translateX(${position}px)`;
+    // Reset the position to start from the beginning
+    position += carouselWidth;
   }
+
+  carouselTrack.style.transform = `translateX(${position}px)`;
 
   // Call this function again after a short delay (e.g., 10ms)
   requestAnimationFrame(moveCarousel);
