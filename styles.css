@@ -1,27 +1,59 @@
 /* Global Styles */
 body {
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  background: linear-gradient(to top, #212121, #FAFAFA);
   color: #fff;
   font-size: 18px;
   text-align: center;
+  margin: 0; /* Remove default body margin */
+}
+
+/* Menu Styles */
+nav {
+  background-color: #1D2A35;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav a {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 /* Section Styles */
 section {
-	font-family: 'Yanone Kaffeesatz', sans-serif;
-  background: linear-gradient(to right, #0F172A, #164E63);
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   color: #fff;
   border: 2px solid #546E7A;
   border-radius: 30px;
   box-shadow: 0 0 10px #546E7A;
   padding: 20px;
   margin: 20px 0;
+  position: relative; /* Set sections to be positioned relative to the video */
+  z-index: 1; /* Ensure sections are above the video */
+  opacity: 0; /* Set initial opacity to 0 */
+  animation: fadeIn 1s; /* Apply fade-in animation */
+  animation-fill-mode: forwards; /* Keep the final state of the animation */
 }
 
 /* Heading Styles */
 h1 {
-	font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 3em;
 }
 
@@ -34,7 +66,7 @@ img {
 
 /* Paragraph Styles */
 p {
-	font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   padding: 20px;
 }
 
@@ -42,26 +74,38 @@ p {
 footer {
   text-align: center;
   padding: 20px;
-  
-  /* CSS Animation */
+}
+
+/* Video Styles */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1; /* Send the video to the background */
+}
+
+/* CSS Animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
   to {
-    opacity: 1;
+    opacity: 1; /* Set opacity to 1 at the end of the animation */
   }
 }
 
-/* Section Styles with Animation */
-section {
-  background: linear-gradient(to right, #0F172A, #164E63);
-  color: #fff;
-  border: 2px solid #546E7A;
-  border-radius: 30px;
-  box-shadow: 0 0 10px #546E7A;
-  padding: 20px;
-  margin: 20px 0;
-  /* Apply the animation to the sections */
-  animation: fadeIn 3s; /* Change the animation duration as desired */
+/* Apply animation delays to each section */
+section:nth-child(2) {
+  animation-delay: 2s;
+}
+
+section:nth-child(3) {
+  animation-delay: 3s;
+}
+
+section:nth-child(4) {
+  animation-delay: 4s;
+}
+
+section:nth-child(5) {
+  animation-delay: 5s;
 }
