@@ -22,17 +22,9 @@ function moveCarousel() {
 
   // Check if the first image is no longer visible on the left
   if (position <= -(carouselWidth * carouselImages.length)) {
-    // Reset the position to the beginning with no animation
-    carouselTrack.style.transition = "none";
+    // Reset the position back to the beginning (position + carouselWidth)
     position = 0;
     carouselTrack.style.transform = `translateX(${position}px)`;
-
-    // Delay the re-enabling of the transition to the next animation frame
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        carouselTrack.style.transition = "transform 0.1s";
-      }, 0);
-    });
   }
 
   // Call this function again after a short delay (e.g., 10ms)
