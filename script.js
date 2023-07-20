@@ -11,6 +11,7 @@ let currentTranslate = 0;
 let prevTranslate = 0;
 let currentSlide = 0;
 let slideWidth = carouselSlides[0].clientWidth;
+let autoScrollInterval;
 
 // Function to set the carousel track position based on the current slide
 function setPositionByIndex() {
@@ -60,15 +61,15 @@ window.addEventListener("resize", updateCarousel);
 
 // Automatic carousel scrolling
 function scrollCarousel() {
-  if (currentSlide === carouselSlides.length - 1) {
-    // Reset to the first slide after reaching the last slide
-    currentSlide = 0;
-  } else {
-    currentSlide++;
-  }
+  currentSlide = (currentSlide + 1) % carouselSlides.length;
   setPositionByIndex();
-  requestAnimationFrame(scrollCarousel);
 }
 
 // Start automatic scrolling
-requestAnimationFrame(scrollCarousel);
+autoScrollInterval = setInterval(scrollCarousel, 3000); // Change the interval (in milliseconds) as needed
+
+// Pause auto-scrolling when the carousel is being dragged
+carouselContainer.addEventListener("mousedown", () => clearInterval(autoScrollInterval));
+carouselContainer.addEventListener("touchstart", () => clearInterval(autoScrollInterval));
+carouselContainer.addEventListener("mouseup", () => autoScrollInterval = setInterval(scrollCarousel, 3000));
+carouselContainer.addEventListener("touchend", () => autoScrollInterval = setInterval(scrollCarousel, 3000));

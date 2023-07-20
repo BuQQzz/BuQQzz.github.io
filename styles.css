@@ -112,19 +112,24 @@ section:nth-child(5) {
 
 /* New Carousel Styles */
 .carousel-container {
-  overflow: hidden;
+  overflow-x: scroll;
   width: 80%;
   margin: 0 auto;
   position: relative;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.8s ease-in-out;
+  scroll-snap-align: center;
 }
 
 .carousel-slide {
-  width: 100%;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
 }
 
 .carousel-slide img {
@@ -132,35 +137,4 @@ section:nth-child(5) {
   margin-right: 20px;
   object-fit: cover;
   border-radius: 10px;
-  display: block;
-  min-width: 100%; /* Ensure each image takes up the full slide width */
-}
-
-.image-number {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #8796A5;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.swing-bar {
-  background-color: #8796A5;
-  height: 4px;
-  width: 80%;
-  margin: 10px auto;
-  border-radius: 2px;
-}
-
-.swing-bar-thumb {
-  position: absolute;
-  background-color: #51E5FF;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  top: -5px;
-  left: 0;
-  cursor: pointer;
 }
