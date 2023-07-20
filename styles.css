@@ -39,7 +39,7 @@ nav a:hover {
 section {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   color: #fff;
-  border: 2px solid #546E7A;
+  background: #164E63; /* Solid background color for the pill boxes */
   border-radius: 30px;
   box-shadow: 0 0 10px #546E7A;
   padding: 20px;
@@ -108,4 +108,21 @@ section:nth-child(4) {
 
 section:nth-child(5) {
   animation-delay: 5s;
+}
+
+/* Image Carousel Styles */
+.carousel-container {
+  overflow: hidden; /* Hide overflow to hide extra images */
+  width: 80%; /* Adjust the width as needed */
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex; /* Arrange images in a row */
+}
+
+.carousel-track img {
+  width: 100%; /* Adjust image size as needed */
+  margin-right: 20px; /* Adjust spacing between images as needed */
+  object-fit: cover; /* Ensure images maintain aspect ratio */
 }
