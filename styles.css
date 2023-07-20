@@ -110,30 +110,57 @@ section:nth-child(5) {
   animation-delay: 5s;
 }
 
-/* Image Carousel Styles */
+/* New Carousel Styles */
 .carousel-container {
-  overflow: hidden; /* Hide overflow to hide extra images */
-  width: 80%; /* Adjust the width as needed */
+  overflow: hidden;
+  width: 80%;
   margin: 0 auto;
+  position: relative;
 }
 
 .carousel-track {
-  display: flex; /* Arrange images in a row */
-  animation: scrollCarousel 10s linear infinite 1s; /* Apply carousel scrolling animation with 1-second delay */
+  display: flex;
+  transition: transform 0.8s ease-in-out;
 }
 
-.carousel-track img {
-  width: 100%; /* Adjust image size as needed */
-  margin-right: 20px; /* Adjust spacing between images as needed */
-  object-fit: cover; /* Ensure images maintain aspect ratio */
+.carousel-slide {
+  width: 100%;
 }
 
-/* Keyframes for scrolling carousel */
-@keyframes scrollCarousel {
-  0% {
-    transform: translateX(0); /* Initial position */
-  }
-  100% {
-    transform: translateX(calc(-100% * 3)); /* Scroll 3 images to the left (3 images in the carousel) */
-  }
+.carousel-slide img {
+  width: 100%;
+  margin-right: 20px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  min-width: 100%; /* Ensure each image takes up the full slide width */
+}
+
+.image-number {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #8796A5;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.swing-bar {
+  background-color: #8796A5;
+  height: 4px;
+  width: 80%;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.swing-bar-thumb {
+  position: absolute;
+  background-color: #51E5FF;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  top: -5px;
+  left: 0;
+  cursor: pointer;
 }

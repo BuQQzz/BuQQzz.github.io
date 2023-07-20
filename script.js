@@ -1,39 +1,74 @@
-// script.js
-
 // Get the carousel container and the carousel track
 const carouselContainer = document.querySelector(".carousel-container");
 const carouselTrack = document.querySelector(".carousel-track");
+const carouselSlides = document.querySelectorAll(".carousel-slide");
+const swingBarThumb = document.querySelector(".swing-bar-thumb");
 
-// Get the individual images in the carousel
-const carouselImages = carouselTrack.querySelectorAll("img");
+// Variables for carousel navigation
+let isDragging = false;
+let startPosition = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let currentSlide = 0;
+let slideWidth = carouselSlides[0].clientWidth;
 
-// Calculate the total width of the carousel track
-const carouselWidth = carouselContainer.clientWidth;
-
-// Set the initial position of the carousel track
-let position = 0;
-
-// Function to move the carousel track
-function moveCarousel() {
-  // Move the carousel track to the left
-  position -= 1;
-
-  carouselTrack.style.transform = `translateX(${position}px)`;
-
-  // Check if the first image is no longer visible on the left
-  if (position <= -(carouselWidth * carouselImages.length)) {
-    // Reset the position back to the beginning (position + carouselWidth)
-    position = 0;
-    // Move the first image to the end of the track to create the infinite loop effect
-    carouselTrack.appendChild(carouselTrack.firstElementChild);
-    carouselTrack.style.transform = `translateX(${position}px)`;
-  }
-
-  // Call this function again after a short delay (e.g., 10ms)
-  requestAnimationFrame(moveCarousel);
+// Function to set the carousel track position based on the current slide
+function setPositionByIndex() {
+  currentTranslate = currentSlide * -slideWidth;
+  carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
 }
 
-// Call the moveCarousel function to start the animation
-moveCarousel();
+// Function to handle touch and drag events for the swing bar
+function handleDragStart(e) {
+  isDragging = true;
+  startPosition = e.clientX - swingBarThumb.offsetLeft;
+  prevTranslate = currentTranslate;
+}
 
+function handleDragEnd() {
+  isDragging = false;
+  const movedSlide = -Math.round(currentTranslate / slideWidth);
+  currentSlide = Math.min(Math.max(movedSlide, 0), carouselSlides.length - 1);
+  setPositionByIndex();
+}
 
+function handleDrag(e) {
+  if (isDragging) {
+    const x = e.clientX - swingBarThumb.offsetLeft;
+    const moveBy = x - startPosition;
+    currentTranslate = prevTranslate + moveBy;
+    carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
+  }
+}
+
+// Add event listeners for swing bar drag
+swingBarThumb.addEventListener("mousedown", handleDragStart);
+document.addEventListener("mouseup", handleDragEnd);
+document.addEventListener("mousemove", handleDrag);
+
+swingBarThumb.addEventListener("touchstart", handleDragStart);
+document.addEventListener("touchend", handleDragEnd);
+document.addEventListener("touchmove", handleDrag);
+
+// Function to update slideWidth and carousel positioning on window resize
+function updateCarousel() {
+  slideWidth = carouselSlides[0].clientWidth;
+  setPositionByIndex();
+}
+
+window.addEventListener("resize", updateCarousel);
+
+// Automatic carousel scrolling
+function scrollCarousel() {
+  if (currentSlide === carouselSlides.length - 1) {
+    // Reset to the first slide after reaching the last slide
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  setPositionByIndex();
+  requestAnimationFrame(scrollCarousel);
+}
+
+// Start automatic scrolling
+requestAnimationFrame(scrollCarousel);
