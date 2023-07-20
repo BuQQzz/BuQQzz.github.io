@@ -112,18 +112,17 @@ section:nth-child(5) {
 
 /* New Carousel Styles */
 .carousel-container {
-  overflow-x: scroll;
-  width: 80%;
-  margin: 0 auto;
   position: relative;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 .carousel-track {
   display: flex;
-  scroll-snap-align: center;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  width: 100%;
+  margin: 0 auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .carousel-slide {
@@ -155,6 +154,7 @@ section:nth-child(5) {
   width: 80%;
   margin: 10px auto;
   border-radius: 2px;
+  position: relative;
 }
 
 .swing-bar-thumb {
@@ -166,6 +166,66 @@ section:nth-child(5) {
   top: -5px;
   left: 0;
   cursor: pointer;
+}
+
+.switch-container {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #51E5FF;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.switch-label {
+  margin-left: 10px;
+  color: #fff;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 /* Switch Styles */
@@ -189,7 +249,7 @@ section:nth-child(5) {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgba(204, 204, 204, 0.6); /* Default switch background color */
   border-radius: 20px;
   transition: background-color 0.4s;
 }
@@ -201,19 +261,38 @@ section:nth-child(5) {
   width: 16px;
   left: 2px;
   bottom: 2px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1); /* Default switch knob color (not transparent) */
   border-radius: 50%;
-  transition: transform 0.4s;
+  transition: transform 0.4s, background-color 0.4s, opacity 0.2s;
 }
 
+/* Adjust the opacity, background color, and text color when the switch is checked */
 input:checked + .slider {
-  background-color: #51E5FF;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #51E5FF;
+  background-color: rgba(81, 229, 255, 0.6); /* Apply transparency to the switch background when checked */
 }
 
 input:checked + .slider:before {
   transform: translateX(20px);
+  background-color: rgba(255, 255, 255, 0.6); /* Apply transparency to the switch knob when checked */
+  opacity: 0.6; /* Set the opacity to 0.6 when the switch is checked */
+}
+
+/* Set the text color to transparent when the switch is checked */
+input:checked + .slider + .switch-label {
+  color: rgba(255, 255, 255, 0.6); /* Apply transparency to the switch text when checked */
+}
+
+/* Animation for the "Auto Scroll" text */
+.switch-label {
+  margin-left: 10px;
+  color: #fff; /* Default switch text color */
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  opacity: 1;
+  transition: color 0.4s, opacity 0.2s;
+}
+
+/* Adjust the text color and opacity when the switch is checked */
+input:checked + .slider + .switch-label {
+  color: rgba(255, 255, 255, 0.6); /* Apply transparency to the switch text when checked */
+  opacity: 0.6; /* Set the opacity to 0.6 when the switch is checked */
 }

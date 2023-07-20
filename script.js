@@ -12,7 +12,7 @@ let currentTranslate = 0;
 let prevTranslate = 0;
 let currentSlide = 0;
 let slideWidth = carouselSlides[0].clientWidth;
-let autoScrollInterval;
+let isAutoScrollOn = true; // Set auto-scroll on by default
 
 // Function to set the carousel track position based on the current slide
 function setPositionByIndex() {
@@ -60,23 +60,49 @@ function updateCarousel() {
 
 window.addEventListener("resize", updateCarousel);
 
-// Function to start or stop the auto-scrolling based on the switch state
-function toggleAutoScroll() {
-  if (autoScrollSwitch.checked) {
-    // Start auto-scrolling
-    autoScrollInterval = setInterval(() => {
-      currentSlide = (currentSlide + 1) % carouselSlides.length;
-      setPositionByIndex();
-    }, 3000); // Change the duration as per your requirement (e.g., 3000ms = 3 seconds)
-  } else {
-    // Stop auto-scrolling
-    clearInterval(autoScrollInterval);
+// Function to scroll to the next slide automatically
+function scrollNextSlide() {
+  if (isAutoScrollOn) {
+    currentSlide = (currentSlide + 1) % carouselSlides.length;
+    setPositionByIndex();
   }
+
+  requestAnimationFrame(scrollNextSlide);
 }
 
-// Add event listener for auto-scroll switch change
-autoScrollSwitch.addEventListener("change", toggleAutoScroll);
+// Add event listener for auto-scroll switch input
+autoScrollSwitch.addEventListener("change", () => {
+  isAutoScrollOn = autoScrollSwitch.checked;
+  if (isAutoScrollOn) {
+    requestAnimationFrame(scrollNextSlide);
+  }
+});
 
 // Initial setup: Set the carousel position and start auto-scrolling
 setPositionByIndex();
-toggleAutoScroll();
+requestAnimationFrame(scrollNextSlide);
+
+// Function to toggle transparency of the switch, switch background, and text when switch is on/off
+function toggleSwitchTransparency() {
+  if (autoScrollSwitch.checked) {
+    document.querySelectorAll(".slider").forEach((el) => {
+      el.style.backgroundColor = "rgba(81, 229, 255, 0.6)";
+    });
+    document.querySelectorAll(".switch-label").forEach((el) => {
+      el.style.color = "rgba(255, 255, 255, 0.6)";
+    });
+  } else {
+    document.querySelectorAll(".slider").forEach((el) => {
+      el.style.backgroundColor = "#ccc";
+    });
+    document.querySelectorAll(".switch-label").forEach((el) => {
+      el.style.color = "#fff";
+    });
+  }
+}
+
+// Call the toggleSwitchTransparency function on page load
+toggleSwitchTransparency();
+
+// Add event listener for auto-scroll switch input to call the toggleSwitchTransparency function
+autoScrollSwitch.addEventListener("change", toggleSwitchTransparency);
