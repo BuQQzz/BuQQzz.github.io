@@ -20,11 +20,13 @@ function moveCarousel() {
 
   carouselTrack.style.transform = `translateX(${position}px)`;
 
-  // Check if the last image is no longer visible on the left
+  // Check if the first image is no longer visible on the left
   if (position <= -(carouselWidth * carouselImages.length)) {
-    // Reset the position back to the beginning (position + carouselWidth)
-    position = 0;
-    carouselTrack.style.transform = `translateX(${position}px)`;
+    // Move the first image to the end of the track to create the infinite loop effect
+    const firstImage = carouselTrack.querySelector("img");
+    carouselTrack.appendChild(firstImage);
+    position += carouselWidth; // Adjust the position to prevent abrupt reset
+    carouselTrack.style.transform = `translateX(${position}px)`; // Move the carousel track to the adjusted position
   }
 
   // Call this function again after a short delay (e.g., 10ms)
