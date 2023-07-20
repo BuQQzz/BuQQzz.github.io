@@ -78,10 +78,6 @@ autoScrollSwitch.addEventListener("change", () => {
   }
 });
 
-// Initial setup: Set the carousel position and start auto-scrolling
-setPositionByIndex();
-requestAnimationFrame(scrollNextSlide);
-
 // Function to toggle transparency of the switch, switch background, and text when switch is on/off
 function toggleSwitchTransparency() {
   if (autoScrollSwitch.checked) {
@@ -106,3 +102,7 @@ toggleSwitchTransparency();
 
 // Add event listener for auto-scroll switch input to call the toggleSwitchTransparency function
 autoScrollSwitch.addEventListener("change", toggleSwitchTransparency);
+
+// Initial setup: Set the carousel position and start auto-scrolling
+setPositionByIndex();
+requestAnimationFrame(scrollNextSlide);
