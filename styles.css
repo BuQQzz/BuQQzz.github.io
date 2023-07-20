@@ -138,3 +138,101 @@ section:nth-child(5) {
   object-fit: cover;
   border-radius: 10px;
 }
+
+.image-number {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #8796A5;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.swing-bar {
+  background-color: #8796A5;
+  height: 4px;
+  width: 80%;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.swing-bar-thumb {
+  position: absolute;
+  background-color: #51E5FF;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  top: -5px;
+  left: 0;
+  cursor: pointer;
+}
+
+
+/* Auto-scroll Switch Styles */
+.auto-scroll-switch {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: #fff;
+}
+
+.auto-scroll-switch label {
+  margin-left: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Outer circle of the switch */
+.auto-scroll-switch .outer-circle {
+  width: 24px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: #8796A5;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Inner circle of the switch (the thumb) */
+.auto-scroll-switch .inner-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #51E5FF;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* When the switch is checked (on) */
+.auto-scroll-switch input:checked + .outer-circle {
+  background-color: #51E5FF;
+}
+
+/* When the switch is checked (on) - move the thumb to the right */
+.auto-scroll-switch input:checked + .outer-circle .inner-circle {
+  transform: translateX(12px);
+}
+
+/* Additional animation for the thumb when the switch is checked (on) */
+.auto-scroll-switch input:checked + .outer-circle .inner-circle::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* When the switch is checked (on) - scale up the thumb circle */
+.auto-scroll-switch input:checked + .outer-circle .inner-circle::before {
+  transform: scale(1);
+  transition-delay: 0.2s;
+}

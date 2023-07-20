@@ -3,6 +3,7 @@ const carouselContainer = document.querySelector(".carousel-container");
 const carouselTrack = document.querySelector(".carousel-track");
 const carouselSlides = document.querySelectorAll(".carousel-slide");
 const swingBarThumb = document.querySelector(".swing-bar-thumb");
+const autoScrollSwitch = document.getElementById("auto-scroll-toggle");
 
 // Variables for carousel navigation
 let isDragging = false;
@@ -59,17 +60,23 @@ function updateCarousel() {
 
 window.addEventListener("resize", updateCarousel);
 
-// Automatic carousel scrolling
-function scrollCarousel() {
-  currentSlide = (currentSlide + 1) % carouselSlides.length;
-  setPositionByIndex();
+// Function to start or stop the auto-scrolling based on the switch state
+function toggleAutoScroll() {
+  if (autoScrollSwitch.checked) {
+    // Start auto-scrolling
+    autoScrollInterval = setInterval(() => {
+      currentSlide = (currentSlide + 1) % carouselSlides.length;
+      setPositionByIndex();
+    }, 3000); // Change the duration as per your requirement (e.g., 3000ms = 3 seconds)
+  } else {
+    // Stop auto-scrolling
+    clearInterval(autoScrollInterval);
+  }
 }
 
-// Start automatic scrolling
-autoScrollInterval = setInterval(scrollCarousel, 3000); // Change the interval (in milliseconds) as needed
+// Add event listener for auto-scroll switch change
+autoScrollSwitch.addEventListener("change", toggleAutoScroll);
 
-// Pause auto-scrolling when the carousel is being dragged
-carouselContainer.addEventListener("mousedown", () => clearInterval(autoScrollInterval));
-carouselContainer.addEventListener("touchstart", () => clearInterval(autoScrollInterval));
-carouselContainer.addEventListener("mouseup", () => autoScrollInterval = setInterval(scrollCarousel, 3000));
-carouselContainer.addEventListener("touchend", () => autoScrollInterval = setInterval(scrollCarousel, 3000));
+// Initial setup: Set the carousel position and start auto-scrolling
+setPositionByIndex();
+toggleAutoScroll();
