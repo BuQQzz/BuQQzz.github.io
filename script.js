@@ -22,13 +22,17 @@ function moveCarousel() {
 
   // Check if the first image is no longer visible on the left
   if (position <= -(carouselWidth * carouselImages.length)) {
-    // Move the first image to the end of the track to create the infinite loop effect
-    carouselTrack.style.transition = "none"; // Disable the transition for immediate position update
-    position = 0; // Reset the position to the beginning
-    carouselTrack.style.transform = `translateX(${position}px)`; // Move the carousel track to the adjusted position
-    setTimeout(() => {
-      carouselTrack.style.transition = "transform 0.1s"; // Re-enable the transition after immediate update
-    }, 0);
+    // Reset the position to the beginning with no animation
+    carouselTrack.style.transition = "none";
+    position = 0;
+    carouselTrack.style.transform = `translateX(${position}px)`;
+
+    // Delay the re-enabling of the transition to the next animation frame
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        carouselTrack.style.transition = "transform 0.1s";
+      }, 0);
+    });
   }
 
   // Call this function again after a short delay (e.g., 10ms)
@@ -37,3 +41,4 @@ function moveCarousel() {
 
 // Call the moveCarousel function to start the animation
 moveCarousel();
+
