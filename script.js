@@ -24,6 +24,8 @@ function moveCarousel() {
   if (position <= -(carouselWidth * carouselImages.length)) {
     // Reset the position back to the beginning (position + carouselWidth)
     position = 0;
+    // Move the first image to the end of the track to create the infinite loop effect
+    carouselTrack.appendChild(carouselTrack.firstElementChild);
     carouselTrack.style.transform = `translateX(${position}px)`;
   }
 
@@ -33,4 +35,5 @@ function moveCarousel() {
 
 // Call the moveCarousel function to start the animation
 moveCarousel();
+
 
