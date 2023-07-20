@@ -29,39 +29,31 @@
   <section>
     <h1>All About AI!</h1>
 
- <!-- Image Carousel -->
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="images/image1.png" alt="Image 1">
-          <div class="image-number">1</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="images/image2.png" alt="Image 2">
-          <div class="image-number">2</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="images/image3.png" alt="Image 3">
-          <div class="image-number">3</div>
-        </div>
-        <!-- Add more images here -->
-      </div>
-      <div class="swing-bar">
-        <div class="swing-bar-thumb"></div>
-      </div>
-      <div class="auto-scroll-switch">
-        <div class="mdc-switch">
-          <div class="mdc-switch__track"></div>
-          <div class="mdc-switch__thumb-underlay">
-            <div class="mdc-switch__thumb">
-              <input type="checkbox" class="mdc-switch__native-control" id="auto-scroll-toggle">
-            </div>
-          </div>
-        </div>
-        <label for="auto-scroll-toggle">Auto Scroll</label>
-      </div>
+ <!-- New Carousel -->
+<div class="carousel-container">
+  <div class="carousel-track">
+    <div class="carousel-slide">
+      <img src="images/image1.png" alt="Image 1">
+      <span class="image-number">1</span>
     </div>
-    <!-- End of Image Carousel -->
+    <div class="carousel-slide">
+      <img src="images/image2.png" alt="Image 2">
+      <span class="image-number">2</span>
+    </div>
+    <div class="carousel-slide">
+      <img src="images/image3.png" alt="Image 3">
+      <span class="image-number">3</span>
+    </div>
+    <!-- Add more carousel slides here -->
+  </div>
+  <div class="swing-bar">
+    <div class="swing-bar-thumb"></div>
+  </div>
+</div>
+<label class="switch">
+  <input type="checkbox" id="auto-scroll-toggle">
+  <span class="slider"></span>
+</label>
 
     <p>This site provides an intro to the world of artificial intelligence, its history, capabilities, applications,
       and future.</p>
