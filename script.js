@@ -17,16 +17,13 @@ let position = 0;
 function moveCarousel() {
   // Move the carousel track to the left
   position -= 1;
-  carouselTrack.style.transition = "transform 0.3s ease-in-out";
+
   carouselTrack.style.transform = `translateX(${position}px)`;
 
-  // Check if the first image is no longer visible on the left
-  if (position <= -carouselWidth) {
-    // Calculate the total width of all images combined
-    const totalWidth = carouselImages.length * carouselWidth;
-    // Reset the position back to the beginning
-    position = position % carouselWidth;
-    carouselTrack.style.transition = "none"; // Disable transition when resetting
+  // Check if the last image is no longer visible on the left
+  if (position <= -(carouselWidth * carouselImages.length)) {
+    // Reset the position back to the beginning (position + carouselWidth)
+    position = 0;
     carouselTrack.style.transform = `translateX(${position}px)`;
   }
 

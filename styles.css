@@ -119,7 +119,7 @@ section:nth-child(5) {
 
 .carousel-track {
   display: flex; /* Arrange images in a row */
-  animation: scroll 10s linear infinite; /* Infinite scroll animation */
+  animation: scrollCarousel 10s linear infinite; /* Apply carousel scrolling animation */
 }
 
 .carousel-track img {
@@ -128,12 +128,12 @@ section:nth-child(5) {
   object-fit: cover; /* Ensure images maintain aspect ratio */
 }
 
-/* CSS Animation for Infinite Carousel */
-@keyframes scroll {
+/* Keyframes for scrolling carousel */
+@keyframes scrollCarousel {
   0% {
-    transform: translateX(0); /* Start from the initial position */
+    transform: translateX(0); /* Initial position */
   }
   100% {
-    transform: translateX(calc(-100% * var(--img-count))); /* Translate to the left by 100% (width of the carousel) */
+    transform: translateX(calc(-100% * 3)); /* Scroll 3 images to the left (3 images in the carousel) */
   }
 }
