@@ -1,213 +1,46 @@
-/* Global Styles */
+/* Global styles */
 body {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  margin: 0;
-}
-
-/* Menu Styles */
-nav {
-  background-color: #1D2A35;
-  padding: 10px 0;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-nav li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-nav a {
+header {
+  background-color: #333;
   color: #fff;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Section Styles */
-section {
-  background: #164E63;
-  border-radius: 30px;
-  box-shadow: 0 0 10px #546E7A;
-  padding: 20px;
-  margin: 20px 0;
-  position: relative;
-  z-index: 1;
-  opacity: 0;
-  animation: fadeIn 1s;
-  animation-fill-mode: forwards;
-}
-
-/* Heading Styles */
-h1 {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-size: 3em;
-}
-
-/* Image Styles */
-img {
-  filter: drop-shadow(0 0 20px #51E5FF);
-  width: 80%;
-  margin: 0 auto;
-}
-
-/* Paragraph Styles */
-p {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  padding: 20px;
-}
-
-/* Footer Styles */
-footer {
   text-align: center;
-  padding: 20px;
+  padding: 1rem;
 }
 
-/* Video Styles */
-#background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1;
+footer {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 1rem;
 }
 
-/* CSS Animation */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+/* Styles for the "Generate Information" button */
+#generateBtn {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  margin: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-/* New Carousel Styles */
-.carousel-container {
-  position: relative;
+#generateBtn:hover {
+  background-color: #45a049;
 }
 
-.carousel-track {
-  display: flex;
-  scroll-snap-type: x mandatory;
-  overflow-x: scroll;
-  width: 100%;
+/* Styles for the information container */
+.info-container {
+  max-width: 800px;
   margin: 0 auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.carousel-slide {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  position: relative;
-}
-
-.carousel-slide img {
-  width: 100%;
-  margin-right: 20px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.image-number {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #8796A5;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.swing-bar {
-  background-color: #8796A5;
-  height: 4px;
-  width: 80%;
-  margin: 10px auto;
-  border-radius: 2px;
-  position: relative;
-}
-
-.swing-bar-thumb {
-  position: absolute;
-  background-color: #51E5FF;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  top: -5px;
-  left: 0;
-  cursor: pointer;
-}
-
-/* Switch Styles */
-.switch-container {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  border-radius: 20px;
-  transition: background-color 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  border-radius: 50%;
-  transition: transform 0.4s;
-}
-
-/* When switch is turned on */
-input:checked + .slider {
-  background-color: rgba(81, 229, 255, 0.3);
-}
-
-input:checked + .slider:before {
-  transform: translateX(20px);
-}
-
-.switch-label {
-  margin-left: 10px;
-  color: #fff;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  transition: color 0.4s;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  line-height: 1.6;
 }
