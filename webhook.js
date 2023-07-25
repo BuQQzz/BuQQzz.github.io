@@ -15,5 +15,5 @@ session.on('message', function(message) {
 dialogflow.webhook({
   projectId: projectId,
   agentId: agentId,
-  webhookPath: '/webhook'
+  webhookPath: 'https://buqqzz.github.io/'
 });
