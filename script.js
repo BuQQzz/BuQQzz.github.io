@@ -4,7 +4,7 @@ function onLoad() {
   // Initialize the PaLM API.
   var palm = require('palm');
   var client = new palm.Client({
-    keyFile: './shining-booth-393816-6872f102e5a3.json',
+    keyFile: './Users\isic\Documents\GitHub\shining-booth-393816-6872f102e5a3.json',
   });
 
   // Initialize the message input field.
