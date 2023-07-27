@@ -3,6 +3,10 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 header {
@@ -14,24 +18,9 @@ header {
 
 footer {
   background-color: #f0f0f0;
+  color: #333;
   text-align: center;
   padding: 1rem;
-}
-
-/* Styles for the "Generate Information" button */
-#generateBtn {
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  padding: 12px 20px;
-  margin: 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-#generateBtn:hover {
-  background-color: #45a049;
 }
 
 /* Styles for the information container */
@@ -43,4 +32,35 @@ footer {
   border-radius: 4px;
   background-color: #f9f9f9;
   line-height: 1.6;
+}
+
+/* Styles for the chatbox container */
+.chatbox {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+}
+
+/* Styles for the chat messages container */
+#chat-messages {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+  overflow-y: auto; /* Add scrollbar if chat messages overflow */
+  max-height: 200px; /* Set a maximum height to limit the chat messages */
+}
+
+/* Styles for individual chat messages */
+.chat-message {
+  padding: 5px 10px;
+  border-bottom: 1px solid #ddd;
 }
