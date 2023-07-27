@@ -3,7 +3,9 @@ function onLoad() {
 
   // Initialize the PaLM API.
   var palm = require('palm');
-  var palm = google.colab.kernel.invokeFunction('palm', [], {});
+  var client = new palm.Client({
+    keyFile: './shining-booth-393816-6872f102e5a3.json',
+  });
 
   // Initialize the message input field.
   var messageInput = document.getElementById('message');
@@ -17,15 +19,13 @@ function onLoad() {
     console.log("Message to be sent:", message);
 
     // Send the message to the PaLM API.
-    palm.call('generateText', {
+    const response = await client.generateText({
       prompt: message,
       maxTokens: 100,
-    }).then(function (response) {
-      // Update the chatbox with the response from the PaLM API.
-      updateChatbox(response.result);
-    }).catch(function (error) {
-      console.error("Error calling PaLM API:", error);
     });
+
+    // Update the chatbox with the response from the PaLM API.
+    updateChatbox(response.result);
   };
 
   // Define the updateChatbox() function.
