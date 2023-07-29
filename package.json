@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "palm": "^0.0.24"
+    "@material/theme": "^14.0.0",
+    "@material/web": "^1.0.0-pre.14",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "rollup": "^3.27.0"
   }
 }

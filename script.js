@@ -1,47 +1,61 @@
-async function onLoad() {
-  console.log("onLoad function executed.");
+// Wrap in setup function
+function setup() {
 
-  // Initialize the PaLM API.
-  const palm = require('palm');
-  const client = new palm.Client({
-    keyFile: './Users\isic\Documents\GitHub\shining-booth-393816-6872f102e5a3.json',
+  // Bot response function
+  function generateResponse(userMessage) {
+    if (userMessage == 'hi') {
+      return 'Hello there!';
+    }
+    if (userMessage == 'how are you') {
+      return "I'm doing great, thanks!";
+    }
+    return 'Hmm I\'m not sure how to respond to that yet!';
+  }
+
+  // Get references
+  const messages = document.getElementById('chat-messages');
+  const inputField = document.getElementById('user-input');
+  const sendBtn = document.getElementById('send');
+
+  // Add event listener
+  sendBtn.addEventListener('click', function() {
+
+    // Get message from input
+    let userMessage = inputField.value;
+    
+    // Log for testing
+    console.log(userMessage);
+
+    // Clear input
+    inputField.value = '';
+
+    // Bot response 
+    const botMessage = generateResponse(userMessage);
+
+    // Create message containers
+    const userMessageContainer = createMessageContainer(userMessage);
+    const botMessageContainer = createMessageContainer(botMessage);
+
+    // Add to chat
+    messages.appendChild(userMessageContainer);
+    messages.appendChild(botMessageContainer);
+
   });
 
-  // Initialize the message input field.
-  const messageInput = document.getElementById('message');
-  messageInput.value = '';
-
-  // Add an event listener to the send button.
-  const sendButton = document.getElementById('send');
-  sendButton.onclick = async () => {
-    // Get the message from the message input field.
-    const message = messageInput.value;
-    console.log("Message to be sent:", message);
-
-    // Send the message to the PaLM API.
-    const response = await client.generateText({
-      prompt: message,
-      maxTokens: 100,
-    });
-
-    // Update the chatbox with the response from the PaLM API.
-    updateChatbox(response.result);
-  };
-
-  // Define the updateChatbox() function.
-  function updateChatbox(response) {
-    // Get the chat messages container.
-    const chatMessages = document.getElementById('chat-messages');
-
-    // Create a new chat message element.
-    const messageElement = document.createElement('div');
-    messageElement.className = 'chat-message';
-    messageElement.textContent = response;
-
-    // Append the new chat message to the chat messages container.
-    chatMessages.appendChild(messageElement);
-
-    // Clear the input field after sending the message.
-    messageInput.value = '';
-  }
 }
+
+// Helper to create message container  
+function createMessageContainer(message) {
+  const container = document.createElement('div');
+  container.classList.add('mdc-list-item');
+
+  const text = document.createElement('span');
+  text.classList.add('mdc-list-item__text');
+  text.textContent = message;
+
+  container.appendChild(text);
+  return container;
+}
+
+// Initialize
+setup();

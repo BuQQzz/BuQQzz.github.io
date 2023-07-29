@@ -34,33 +34,22 @@ footer {
   line-height: 1.6;
 }
 
-/* Styles for the chatbox container */
+/* Chatbox styles */
+
 .chatbox {
-  text-align: center;
-  max-width: 400px;
+  width: 50%;
   margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  line-height: 1.6;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Styles for the chat messages container */
 #chat-messages {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  line-height: 1.6;
-  overflow-y: auto; /* Add scrollbar if chat messages overflow */
-  max-height: 200px; /* Set a maximum height to limit the chat messages */
+  max-height: 400px;
+  overflow: auto; 
 }
 
-/* Styles for individual chat messages */
-.chat-message {
-  padding: 5px 10px;
-  border-bottom: 1px solid #ddd;
+#user-input {
+  width: 100%;
+  margin-bottom: 16px;
 }

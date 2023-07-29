@@ -8,10 +8,10 @@
   <!-- Add Google Fonts link for "Orbitron" font -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   
-  <!-- Add Material 3 styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/@mui/material/dist/mui.min.css" rel="stylesheet">
+  <!-- Add Material Design styles -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
+  <link rel="stylesheet" href="./node_modules/@material/theme/dist/mdc.theme.min.css">
 
   <!-- Add the script tag for the PaLM API -->
   <script src="https://apis.google.com/js/platform.js?onload=onLoad"></script>
@@ -27,21 +27,27 @@
     <h1>The Rise Of A.I</h1>
   </header>
 
-<main>
-  <!-- Chatbox -->
-  <div class="chatbox">
-    <h2>Chat with Nova</h2>
-    <div id="chat-messages"></div> <!-- Container for chat messages -->
-    <input type="text" id="message" placeholder="Type your message here...">
-    <button type="button" id="send">Send</button>
-  </div>
-</main>
+  <main>
+    <!-- Chatbox -->
+    <div class="chatbox">
+      <h2 class="mdc-typography--headline6">Chat with Nova</h2>
+      <div id="chat-messages" class="mdc-list"></div>
+      <mwc-textfield id="user-input" label="Type your message" outlined></mwc-textfield>
 
+<mwc-button id="send">
+  <mwc-icon slot="icon">send</mwc-icon>
+  Send 
+</mwc-button>
+
+    </div>
+  </main>
 
   <footer>
-    <p>We hope that this website will help you to understand the future of AI and its potential impact on your life.</p>
+    <p>We hope that this website will help you understand the future of AI and its potential impact on your life.</p>
   </footer>
 
+  <script src="./bundle.js"></script>
   <script src="script.js"></script> <!-- Add the JavaScript file -->
 </body>
 </html>
+
