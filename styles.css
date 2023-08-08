@@ -52,4 +52,41 @@ footer {
 #user-input {
   width: 100%;
   margin-bottom: 16px;
+  
+  // Add the mwc-textfield class
+  .mwc-textfield {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    outline: none;
+    
+    // Add an event listener for the input event
+    &:focus {
+      border-color: #009688;
+    }
+  }
 }
+
+#send {
+  width: 100%;
+  margin-bottom: 16px;
+  
+  // Add the mwc-button class
+  .mwc-button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    cursor: pointer;
+    
+    // Add the elevated button class
+    &.mdc-button--raised {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
